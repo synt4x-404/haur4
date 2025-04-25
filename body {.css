@@ -1,0 +1,32 @@
+body {
+  background: linear-gradient(to right, #ffc1cc, #ffdde1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  color: #d63384;
+  margin-top: 100px;
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin: auto;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button {
+  background-color: #ff6f91;
+  border: none;
+  padding: 15px 25px;
+  font-size: 16px;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ff4f7a;
+}

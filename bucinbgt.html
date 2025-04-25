@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Bucin untuk Kamu</title>
+  <style>
+    /* Basic Styles */
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 50px;
+      color: #ff3399;
+    }
+    .heart {
+      font-size: 50px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    button {
+      background-color: #ff66b2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    /* Snowfall */
+    .snowflake {
+      position: fixed;
+      font-size: 20px;
+      color: white;
+      z-index: 9999;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Mobile-Friendly */
+    @media (max-width: 768px) {
+      body {
+        padding: 30px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      button {
+        font-size: 16px;
+        padding: 10px 15px;
+      }
+      .heart {
+        font-size: 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      .heart {
+        font-size: 25px;
+      }
+      button {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="audio" autoplay loop>
+    <source src="bunga maaf.mp4" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+  
+  <button onclick="toggleAudio()">Play/Pause</button>
+  
+  <script>
+    function toggleAudio() {
+      var audio = document.getElementById('audio');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+  
+
+  <h1>Hai Sayang! 💖</h1>
+  <p class="heart">💓</p>
+  <p>Hari ini aku cuma mau bilang...</p>
+  <h2>AKU SAYANG KAMU 🥺❤️</h2>
+
+  <button onclick="alert('Aku juga sayang kamu 😚')">Klik kalau kamu juga sayang aku</button>
+
+  <!-- Tombol Jebakan -->
+  <br><br>
+  <button id="noButton" style="position: relative;">Aku gak sayang kamu 😤</button>
+
+  <!-- Efek Salju -->
+  <script>
+    const snowContainer = document.createElement('div');
+    snowContainer.style.position = 'fixed';
+    snowContainer.style.top = '0';
+    snowContainer.style.left = '0';
+    snowContainer.style.width = '100%';
+    snowContainer.style.height = '100%';
+    snowContainer.style.pointerEvents = 'none';
+    snowContainer.style.zIndex = '9999';
+    document.body.appendChild(snowContainer);
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.textContent = '❄️';
+      snowflake.style.position = 'absolute';
+      snowflake.style.fontSize = `${Math.random() * 20 + 10}px`;
+      snowflake.style.top = '-20px';
+      snowflake.style.left = `${Math.random() * 100}%`;
+      snowflake.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
+      snowContainer.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 300);
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Tombol Jebakan
+    const noButton = document.getElementById('noButton');
+    noButton.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+    });
+  </script>
+
+</body>
+</html>
